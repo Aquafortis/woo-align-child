@@ -2,7 +2,7 @@
 
 Example of a child theme with Woo Align Buttons included.
 
-##### It is not recommended to use Woo Align Buttons in a child theme.
+#### It is not recommended to use Woo Align Buttons in a production child theme.
 
 You can use this example child theme for testing purposes.
 
@@ -12,17 +12,17 @@ Download here:
 
 https://wordpress.org/plugins/woo-align-buttons/
 
-If using this child theme for testing, make sure you **change** the Template and Text Domain **"parent_theme_name"** to the name of your Parent Theme.
+If using this child theme for testing, make sure you **change** the Template and Text Domain **"parent_theme_name"** in the `style.css` to the name of your Parent Theme.
 
-#### Important
+### Important
 
 Woo Align Buttons may **not** work on many custom themes.
 
-It is designed to work on **unmodified** WooCommerce files. If your theme has modified any WooCommerce product templates or added hooks that affect those templates or files, this plugin may not work.
+It is designed to work on **unmodified** WooCommerce files. If your theme has modified any WooCommerce product templates or added hooks that affect those templates or files, this plugin may **not** work.
 
 It is assumed that if the theme developer has hacked, hooked, or modified any WooCommerce files, they should have already fixed the problem with aligning the buttons.
 
-#### How to use Woo Align Buttons in your own theme:
+### How to use Woo Align Buttons in your own theme:
 
 **1**. Copy the `wooalign-public.js` file to your theme's js folder.
 
