@@ -4,7 +4,7 @@ function wooalign_enqueue_scripts() {
   wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 
   // Enqueue the wooalign-public.js for Woo Align Buttons
-  wp_enqueue_script( 'woo-align-buttons', get_stylesheet_directory_uri() . '/js/wooalign-public.js', array( 'jquery' ), '3.1.1', true );
+  wp_enqueue_script( 'woo-align-buttons', get_stylesheet_directory_uri() . '/js/wooalign-public.js', array( 'jquery' ), '3.4.4', true );
 }
 add_action( 'wp_enqueue_scripts', 'wooalign_enqueue_scripts' );
 

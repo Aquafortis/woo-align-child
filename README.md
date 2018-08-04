@@ -22,6 +22,10 @@ It is designed to work on **unmodified** WooCommerce files. If your theme has mo
 
 It is assumed that if the theme developer has hacked, hooked, or modified any WooCommerce files, they should have already fixed the problem with aligning the buttons.
 
+If it is not working on your theme chances are your theme has been modified or hacked, and this plugin will NOT work.
+
+You can either choose another theme, or contact your theme developer and ask them to fix their theme.
+
 ### How to use Woo Align Buttons in your own theme:
 
 **1**. Copy the `wooalign-public.js` file to your theme's js folder.
@@ -29,7 +33,7 @@ It is assumed that if the theme developer has hacked, hooked, or modified any Wo
 **2**. Enqueue the `wooalign-public.js` file in your `functions.php` file. (See example `functions.php` file)
 
 ```php
-wp_enqueue_script( 'woo-align-buttons', get_stylesheet_directory_uri() . '/js/wooalign-public.js', array( 'jquery' ), '3.1.1', true );
+wp_enqueue_script( 'woo-align-buttons', get_stylesheet_directory_uri() . '/js/wooalign-public.js', array( 'jquery' ), '3.4.4', true );
 ```
 
 **3**. Add these hooks to your `functions.php` file. (See example `functions.php` file)
