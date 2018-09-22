@@ -33,7 +33,7 @@ You can either choose another theme, or contact your theme developer and ask the
 **2**. Enqueue the `wooalign-public.js` file in your `functions.php` file. (See example `functions.php` file)
 
 ```php
-wp_enqueue_script( 'woo-align-buttons', get_stylesheet_directory_uri() . '/js/wooalign-public.js', array( 'jquery' ), '3.4.4', true );
+wp_enqueue_script( 'woo-align-buttons', get_stylesheet_directory_uri() . '/js/wooalign-public.js', array( 'jquery' ), '1.0', true );
 ```
 
 **3**. Add these hooks to your `functions.php` file. (See example `functions.php` file)
