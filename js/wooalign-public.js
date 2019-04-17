@@ -2,69 +2,115 @@
  * Plugin Name:       Woo Align Buttons
  * Plugin URI:        https://wordpress.org/plugins/woo-align-buttons
  * Description:       A lightweight plugin to align WooCommerce "Add to cart" buttons.
- * Version:           3.5.5
+ * Version:           10.5.0
  * Author:            320up
  * Author URI:        https://320up.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  */
-(function($) {
-  "use strict";
-  if ($("ul.products").length) {
-    var wooAlignButtons = function() {
-      $("ul.products").each(function() {
-        var gridRows = [];
-        var tempRow = [];
-        var wooGridElements = $(this).children("li");
-        wooGridElements.each(function(index) {
-          if ($(this).css("clear") !== "none" && index !== 0) {
-            gridRows.push(tempRow);
-            tempRow = [];
-          }
-          tempRow.push(this);
-          if (wooGridElements.length === index + 1) {
-            gridRows.push(tempRow);
-          }
-        });
-        $.each(gridRows, function() {
-          var tallestWooInfo = 0;
-          $.each(this, function() {
-            $(this).find("#woo-height").css({
-              "min-height": "",
-              "padding-bottom": ""
+var wooAlignButtons = function() {
+    (function($) {
+        "use strict";
+        if ($("ul.products,div.owl-stage").length) {
+            $("ul.products,div.owl-stage").each(function() {
+                var gridRows = [];
+                var tempRow = [];
+                var wooGridElements = $(this).children("li,div.owl-item");
+                wooGridElements.each(function(index) {
+                    if ($(this).css("clear") !== "none" && index !== 0) {
+                        gridRows.push(tempRow);
+                        tempRow = [];
+                    }
+                    tempRow.push(this);
+                    if (wooGridElements.length === index + 1) {
+                        gridRows.push(tempRow);
+                    }
+                });
+                $(gridRows).each(function() {
+                    var title = "h2.woocommerce-loop-product__title";
+                    if ($(title).length) {
+                        var tallestTitle = 0;
+                        $(this).each(function() {
+                            $(this).find(title).css({
+                                "height": "",
+                            });
+                            var titleHeightInfo = $(this).find(title).height();
+                            var titleSpacing = 1;
+                            var titleHeight = titleHeightInfo + titleSpacing;
+                            if (titleHeight > tallestTitle) {
+                                tallestTitle = titleHeight;
+                            }
+                        });
+                        $(this).each(function() {
+                            $(this).find(title).css("height", tallestTitle);
+                        });
+                        // Change pixels as needed (originally 420px)
+                        if (window.matchMedia("(max-width: 320px)").matches) {
+                            $(this).each(function() {
+                                $(this).find(title).css("height", "auto");
+                            });
+                        }
+                    }
+                    var wooheight = "#woo-height";
+                    var tallestWoo = 0;
+                    $(this).each(function() {
+                        $(this).find(wooheight).css({
+                            "min-height": "",
+                            "padding-bottom": ""
+                        });
+                        var wooHeightInfo = $(this).find(wooheight).height();
+                        var wooSpacing = 10;
+                        var totalHeight = wooHeightInfo + wooSpacing;
+                        if (totalHeight > tallestWoo) {
+                            tallestWoo = totalHeight;
+                        }
+                    });
+                    $(this).each(function() {
+                        $(this).find(wooheight).css("min-height", tallestWoo);
+                    });
+                    // Change pixels as needed (originally 420px)
+                    if (window.matchMedia("(max-width: 320px)").matches) {
+                        $(this).each(function() {
+                            $(this).find(wooheight).css("min-height", "0");
+                        });
+                    }
+                });
             });
-            var wooInfoHeight = $(this).find("#woo-height").height();
-            var wooSpacing = 10;
-            var totalHeight = wooInfoHeight + wooSpacing;
-            if (totalHeight > tallestWooInfo) {
-              tallestWooInfo = totalHeight;
-            }
-          });
-          $.each(this, function() {
-            $(this).find("#woo-height").css("min-height", tallestWooInfo);
-          });
-        });
-      });
-    };
+        }
+    })(jQuery);
+};
+window.onload = function() {
     wooAlignButtons();
-    $(window).on("load", function() {
-      wooAlignButtons();
-      $(window).on("hold-your-horses", function() {
+};
+window.onresize = function() {
+    wooAlignButtons();
+};
+window.addEventListener("load", function() {
+    setTimeout(function() {
         wooAlignButtons();
-      });
-    });
-  }
-  var resizeTimer;
-  $(window).resize(function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-      $(window).trigger("hold-your-horses");
-    }, 250);
-  });
-  // Scroll function for ajax load more issues
-  // Uncomment next 3 lines to use
-  //$(window).on("scroll", function() {
+    }, 2000);
+    setTimeout(function() {
+        wooAlignButtons();
+    }, 5000);
+});
+// Remove functions below if not required
+window.onscroll = function() {
     //wooAlignButtons();
-  //});
-  // End scroll function
-})(jQuery);
+};
+document.onmousemove = function(event) {
+    //wooAlignButtons(event);
+};
+window.addEventListener("click", function() {
+    setTimeout(function() {
+        wooAlignButtons();
+    }, 2000);
+    setTimeout(function() {
+        wooAlignButtons();
+    }, 3000);
+    setTimeout(function() {
+        wooAlignButtons();
+    }, 5000);
+    setTimeout(function() {
+        wooAlignButtons();
+    }, 7000);
+});
