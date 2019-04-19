@@ -52,27 +52,29 @@ var wooAlignButtons = function() {
                         }
                     }
                     var wooheight = "#woo-height";
-                    var tallestWoo = 0;
-                    $(this).each(function() {
-                        $(this).find(wooheight).css({
-                            "min-height": "",
-                            "padding-bottom": ""
-                        });
-                        var wooHeightInfo = $(this).find(wooheight).height();
-                        var wooSpacing = 10;
-                        var totalHeight = wooHeightInfo + wooSpacing;
-                        if (totalHeight > tallestWoo) {
-                            tallestWoo = totalHeight;
-                        }
-                    });
-                    $(this).each(function() {
-                        $(this).find(wooheight).css("min-height", tallestWoo);
-                    });
-                    // Change pixels as needed (originally 420px)
-                    if (window.matchMedia("(max-width: 320px)").matches) {
+                    if ($(wooheight).length) {
+                        var tallestWoo = 0;
                         $(this).each(function() {
-                            $(this).find(wooheight).css("min-height", "0");
+                            $(this).find(wooheight).css({
+                                "min-height": "",
+                                "padding-bottom": ""
+                            });
+                            var wooHeightInfo = $(this).find(wooheight).height();
+                            var wooSpacing = 10;
+                            var totalHeight = wooHeightInfo + wooSpacing;
+                            if (totalHeight > tallestWoo) {
+                                tallestWoo = totalHeight;
+                            }
                         });
+                        $(this).each(function() {
+                            $(this).find(wooheight).css("min-height", tallestWoo);
+                        });
+                        // Change pixels as needed (originally 420px)
+                        if (window.matchMedia("(max-width: 320px)").matches) {
+                            $(this).each(function() {
+                                $(this).find(wooheight).css("min-height", "0");
+                            });
+                        }
                     }
                 });
             });
