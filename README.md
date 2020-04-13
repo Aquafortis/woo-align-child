@@ -35,7 +35,7 @@ wp_enqueue_script( 'woo-align-buttons', get_stylesheet_directory_uri() . '/js/wo
 ```php
 add_action( 'woocommerce_before_shop_loop_item', 'wooalign_product_link_open', 8 );
 function wooalign_product_link_open() {
-    echo '<div id="woo-height">';
+    echo '<div class="woo-height">';
 }
 ```
 

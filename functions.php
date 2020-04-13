@@ -12,7 +12,7 @@ add_action( 'wp_enqueue_scripts', 'wooalign_enqueue_scripts' );
 // Add wrapper for Woo Align Buttons
 add_action( 'woocommerce_before_shop_loop_item', 'wooalign_product_link_open', 8 );
 function wooalign_product_link_open() {
-    echo '<div id="woo-height">';
+    echo '<div class="woo-height">';
 }
 
 add_action( 'woocommerce_after_shop_loop_item', 'wooalign_product_link_close', 4 );
